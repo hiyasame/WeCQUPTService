@@ -1,0 +1,25 @@
+{
+  "name": "wecqupt-service",
+  "version": "1.0.0",
+  "description": "a node application for wecqupt everyday-sign",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ColdRain-Moro/WeCQUPTService.git"
+  },
+  "author": "Rain",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ColdRain-Moro/WeCQUPTService/issues"
+  },
+  "homepage": "https://github.com/ColdRain-Moro/WeCQUPTService#readme",
+  "dependencies": {
+    "crypto": "^1.0.1",
+    "fs": "0.0.1-security",
+    "node-fetch": "^3.2.3",
+    "node-schedule": "^2.1.0"
+  }
+}
