@@ -4,23 +4,22 @@
 
 ## Usage
 
-- 补全secrets.js
+### Github Action
 
-~~~js
-const studentId = '学号'
-const name = '姓名'
-const password = '密码'
-const tyCode = '统一验证码'
-const sex = '性别'
-// 是否使用github action
-const useGithubAction = true
+- fork该项目
+- 配置如下环境变量:
+    -- NAME 名称
+    -- STU_ID 学号
+    -- TY_CODE 统一验证码
+    -- SEX 性别
+    -- PASSWORD 密码
+- 重新运行 github action ci
 
-export {
-    studentId, name, password, tyCode, sex, useGithubAction
-}
-~~~
+### 部署到服务器
 
-- 部署到服务器/Github Action(推荐)
+- 修改secrets.js中的内容
+- `npm install`
+- `npm run start`
 
 ## Run
 
