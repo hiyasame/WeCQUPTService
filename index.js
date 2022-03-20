@@ -1,14 +1,13 @@
 import schedule from 'node-schedule';
 import fs from 'fs';
-import { studentId, name, password, tyCode, sex } from './secrets.js';
+import { useGithubAction, studentId, name, password, tyCode, sex } from './secrets.js';
 import { getRequestObj, keymrdk } from './consts.js';
 import { bind, getMrdkFlag, postMrdkInfo } from './api.js';
 import { randomUUID } from 'crypto';
 
 console.log("程序已启动")
 
-// 每天12点打卡
-schedule.scheduleJob('0 0 12 * * *', async () => {
+async function job() {
     const openid = fs.readFileSync('./openid.txt', 'utf8')
     const d = new Date()
     const key = keymrdk(d.getDay(), d.getHours())
@@ -16,6 +15,7 @@ schedule.scheduleJob('0 0 12 * * *', async () => {
     const flag = await getMrdkFlag(studentId, openid, new Date().getTime() / 1000)
     // 已经打卡 返回
     if (flag.data != null && flag.data.count != "0") {
+        console.log("已经打过卡了")
         return
     }
     let res = await postMrdkInfo(req)
@@ -31,4 +31,12 @@ schedule.scheduleJob('0 0 12 * * *', async () => {
         res = await postMrdkInfo(req)
     }
     console.log("已打卡")
-});
+}
+
+if (useGithubAction) {
+    // 使用github action 自带的定时执行功能
+    job()
+} else {
+    // 每天12点打卡
+    schedule.scheduleJob('0 0 12 * * *', job);
+}
