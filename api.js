@@ -12,17 +12,16 @@ const BASE_URL = "https://we.cqupt.edu.cn"
  * @returns 
  */
 async function bind(openid, yktid, passwd, timestamp) {
+
     const res = await fetch(BASE_URL + '/api/users/bind.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            key: btoa(
-                JSON.stringify({
-                    openid, yktid, passwd, timestamp
-                })
-            ),
+            key: Buffer.from(JSON.stringify({
+                openid, yktid, passwd, timestamp
+            })).toString("base64"),
         })
     })
     return await res.json()
@@ -43,11 +42,9 @@ async function getMrdkFlag(xh, openid, timestamp) {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            key: btoa(
-                JSON.stringify({
-                    xh, openid, timestamp
-                })
-            ),
+            key: Buffer.from(JSON.stringify({
+                xh, openid, timestamp
+            })).toString("base64"),
         })
     })
     return await res.json()
@@ -66,9 +63,7 @@ async function postMrdkInfo(obj) {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            key: btoa(
-                JSON.stringify(obj)
-            )
+            key: Buffer.from(JSON.stringify(obj)).toString("base64")
         })
     })
     return await res.json()

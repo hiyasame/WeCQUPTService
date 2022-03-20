@@ -5,6 +5,8 @@ import { getRequestObj, keymrdk } from './consts.js';
 import { bind, getMrdkFlag, postMrdkInfo } from './api.js';
 import { randomUUID } from 'crypto';
 
+console.log("程序已启动")
+
 // 每天12点打卡
 schedule.scheduleJob('0 0 12 * * *', async () => {
     const openid = fs.readFileSync('./openid.txt', 'utf8')
