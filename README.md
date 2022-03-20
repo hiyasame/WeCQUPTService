@@ -8,11 +8,11 @@
 
 - fork该项目
 - 配置如下环境变量:
-    -- NAME 名称
-    -- STU_ID 学号
-    -- TY_CODE 统一验证码
-    -- SEX 性别
-    -- PASSWORD 密码
+    + NAME 名称
+    + STU_ID 学号
+    + TY_CODE 统一验证码
+    + SEX 性别
+    + PASSWORD 密码
 - 重新运行 github action ci
 
 ### 部署到服务器
